@@ -1,0 +1,16 @@
+{
+  "dependencies": {
+    "sass": "^1.58.1"
+  },
+  "name": "projects",
+  "version": "1.0.0",
+  "main": "index.js",
+  "devDependencies": {},
+  "scripts": {
+    "dev": "sass sass:css -w"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": ""
+}
