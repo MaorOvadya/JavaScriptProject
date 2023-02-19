@@ -91,6 +91,7 @@ const itemBox = document.querySelector(".item-box");
 //Add item to shopping cart
 function makeNewEl(iphone, clickedId) {
   const iphonecartItem = document.createElement("div");
+
   iphonecartItem.classList.add("itemBox");
   iphonecartItem.innerHTML = `<div class="cart-item">
   <div class="iphone-img"><img src="${iphone[clickedId].iphoneimg}" alt=""></div>
@@ -116,17 +117,19 @@ function makeNewEl(iphone, clickedId) {
 
   itemBox.appendChild(iphonecartItem);
   removeItemFromCart();
+
+  calcCost(iphone[clickedId].iphoneprice); // added new function
 }
 
 function addShoppingCart(data) {
   const addItemBtn = document.querySelectorAll(".iphone-add-btn");
   const itemCountInfo = document.querySelector(".cart-count-info");
-  const totalCost = document.querySelector(".total-cost");
+  // const totalCost = document.querySelector('.total-cost h3 span') // not here
 
   addItemBtn.forEach((addItemBtn) => {
     addItemBtn.addEventListener("click", () => {
       if (addItemBtn) {
-        calculate();
+        // calculate() // No need anymore
         itemCountInfo.innerHTML++;
         makeNewEl(
           data,
@@ -150,13 +153,15 @@ function removeItemFromCart() {
   });
 }
 
-function calculate() {
-  const itemPrice = document.querySelectorAll(".iphone-price");
-  let price = 0;
-  let sum;
+// new calc function
 
-  itemPrice.forEach((iphone) => {
-    // itemPrice[iphone.parentNode.parentNode.getAttribute("id") - 1];
-    console.log((itemPrice[iphone.iphoneprice] = price.toFixed(2)));
-  });
+let sum = 0;
+function calcCost(itemPrice) {
+  const totalCost2 = document.querySelector(
+    ".item-total-cost .total-cost span"
+  ); // changed
+
+  sum += itemPrice;
+  console.log(sum);
+  totalCost2.textContent = sum;
 }
